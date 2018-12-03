@@ -5,14 +5,16 @@ def calibrateOutput (input, output):
     return output;
 
 def findRepeatedFrequency(providedList):
-    processedList = []
+    processedList = {0}
     frequency = 0
     while True:
         for change in providedList:
-            processedList.append(frequency)
+            
             frequency = calibrateOutput(change, frequency)
             if frequency in processedList:
                 return frequency;
+            else:
+                processedList.add(frequency)
 
 file = open(fileName, "r")
 for line in file:    
