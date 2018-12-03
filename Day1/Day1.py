@@ -1,17 +1,18 @@
 finalOutput = 0
 thisList = []
+inputList = []
 fileName = ".\\adventofcode2018\\Day1\\input.txt"
 def calibrateOutput (input, output):
     output = output + input
     return output;
 
-while  True:
-    file = open(fileName,"r")
-    for line in file:
-        if finalOutput in thisList:
-            print(finalOutput)
-            False;
-        else:
-            thisList.append(finalOutput)
-        finalOutput = calibrateOutput(int(line),finalOutput)
-    file.close();
+file = open(fileName, "r")
+for line in file:
+    inputList.append(int(line))
+file.close();
+
+while  finalOutput not in thisList:    
+    for change in inputList:
+        thisList.append(finalOutput)
+        finalOutput = calibrateOutput(change,finalOutput)
+print(finalOutput)
